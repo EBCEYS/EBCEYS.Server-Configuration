@@ -4,7 +4,7 @@
 
 ## Вводимые сущности
 
-[Сущности - Configs & Keys](./docs/Entities.md)
+[Сущности - *Configs* & *Keys*](./docs/Entities.md)
 
 ## Поддерживаемые переменные окружения
 
@@ -12,9 +12,15 @@
 
 ## Api контроллеры
 
-[ApiControllers](./docs/WebApi.md)
+[*ApiControllers*](./docs/WebApi.md)
 
-## Пример *docker-compose.yaml* файла для автоматической передаче конфигов
+## Конфигурационный файл
+
+[*/app/appsettings.json*](./docs/appsettings.md)
+
+## Пример *docker-compose.yaml* файла при автоматической передаче конфигов
+
+По умолчанию сервис слушает 3000 порт. Можно переопределить используя, например, *ASPNETCORE_URLS*.
 
 [*Docker* файл](./src/EBCEYS.Server-configuration/Dockerfile)
 
