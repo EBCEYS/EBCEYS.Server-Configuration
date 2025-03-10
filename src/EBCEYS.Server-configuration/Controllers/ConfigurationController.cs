@@ -8,7 +8,7 @@ namespace EBCEYS.Server_configuration.Controllers
     /// <summary>
     /// Controller wich manipulates the config files.
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("/api/[controller]")]
     [ApiController]
     public class ConfigurationController(ILogger<ConfigurationController> logger, ConfigurationProcessingService configs) : ControllerBase
     {
@@ -22,7 +22,7 @@ namespace EBCEYS.Server_configuration.Controllers
         /// <response code="400">Incorrect query params.</response>
         /// <response code="500">Internal error.</response>
         /// <returns></returns>
-        [HttpGet("/files/info")]
+        [HttpGet("files/info")]
         [ProducesResponseType<IEnumerable<ConfigurationFileInfo>>(StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest, "application/text")]
@@ -63,7 +63,7 @@ namespace EBCEYS.Server_configuration.Controllers
         /// <response code="400">Incorrect file path param.</response>
         /// <response code="500">Internal error.</response>
         /// <returns></returns>
-        [HttpGet("/files/{filePath}")]
+        [HttpGet("files/{filePath}")]
         [ProducesResponseType<FileStream>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
@@ -104,7 +104,7 @@ namespace EBCEYS.Server_configuration.Controllers
         /// <response code="204">Configuration not found.</response>
         /// <response code="500">Internal error.</response>
         /// <returns></returns>
-        [HttpGet("/archive/tar")]
+        [HttpGet("archive/tar")]
         [ProducesResponseType<Stream>(StatusCodes.Status200OK, "application/x-tar")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
@@ -144,7 +144,7 @@ namespace EBCEYS.Server_configuration.Controllers
         /// <response code="400">Incorrect archive format.</response>
         /// <response code="500">Internal error.</response>
         /// <returns></returns>
-        [HttpPatch("/archive/tar")]
+        [HttpPatch("archive/tar")]
         [ProducesResponseType(200)]
         [ProducesResponseType<string>(400)]
         [ProducesResponseType<string>(500)]

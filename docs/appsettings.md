@@ -37,13 +37,13 @@
         },
         "rules": {
             "0": {
-                "logger": "Microsoft.*",
-                "maxLevel": "Info",
+                "logger": "Microsoft.EntityFrameworkCore.*",
+                "maxLevel": "Warn",
                 "final": true
             },
             "1": {
-                "logger": "Microsoft.EntityFrameworkCore.Database.Command",
-                "maxLevel": "Warn",
+                "logger": "Microsoft.*",
+                "maxLevel": "Info",
                 "final": true
             },
             "2": {

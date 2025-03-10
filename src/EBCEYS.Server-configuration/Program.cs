@@ -1,8 +1,10 @@
 using System.Reflection;
+using EBCEYS.ContainersEnvironment.HealthChecks.Extensions;
 using EBCEYS.Server_configuration.ConfigDatabase;
 using EBCEYS.Server_configuration.Middle;
 using EBCEYS.Server_configuration.Middle.Archives;
 using EBCEYS.Server_configuration.ServiceEnvironment;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
@@ -42,6 +44,13 @@ namespace EBCEYS.Server_configuration
 
             WebApplication app = builder.Build();
 
+            app.UseForwardedHeaders(new()
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+            app.ConfigureHealthChecks();
+
             // Configure the HTTP request pipeline.
             if (SupportedEnvironmentVariables.ServiceEnableSwagger.Value!.Value)
             {
@@ -75,6 +84,7 @@ namespace EBCEYS.Server_configuration
 
         private static void ConfigureServices(WebApplicationBuilder builder)
         {
+            builder.Services.ConfigureHealthChecks();
             builder.Services.AddDbContext<ConfigurationDatabaseContext>(opts =>
             {
                 opts.UseSqlite(DBConnectionString);
