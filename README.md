@@ -22,7 +22,7 @@
 
 По умолчанию сервис слушает 3000 порт. Можно переопределить используя, например, *ASPNETCORE_URLS*.
 
-[*Docker* файл](./src/EBCEYS.Server-configuration/Dockerfile)
+[*Docker* файл](./src/Dockerfile)
 
 ```yaml
 services:
@@ -43,7 +43,7 @@ services:
       - KEYS_STORAGE_PATH=/storage/keys
       - KEYS_STORAGE_FORGET_OLD_KEYS=true
       - DBCLEANER_TIME_TO_STORE=00:00:10
-    image: ${DOCKER_REGISTRY-}ebceysserverconfiguration
+    image: ebceys/server-configuration:1.0.0
     build:
       context: .
       dockerfile: EBCEYS.Server-configuration/Dockerfile
