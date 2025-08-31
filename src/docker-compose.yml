@@ -4,7 +4,7 @@ services:
     hostname: ebceys.server-configuration
     environment:
       - SERVICE_ENABLE_SWAGGER=true
-      - SERVICE_DATABASE_PATH=/data/configuration.db 
+      - SERVICE_DATABASE_PATH=/data/configuration.db
       - DOCKER_CONNECTION_USE_DEFAULT=true
       - DOCKER_CONNECTION_URL=unix:///var/run/docker.sock
       - CONFIG_PROCESSOR_ENABLE=true
@@ -40,8 +40,8 @@ services:
       configuration.restartafter: "true"
     image: rabbitmq:4.0.5-management
     ports:
-        - "5675:5672"
-        - "15675:15672"
+      - "5675:5672"
+      - "15675:15672"
     depends_on:
       - ebceys.server-configuration
     networks:
